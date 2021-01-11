@@ -1,12 +1,15 @@
-# study-note
+# web-course
+
+- html/css [https://www.w3school.com.cn/h.asp](https://www.w3school.com.cn/h.asp)
+- sass 文档地址：[https://www.sasscss.com/](https://www.sasscss.com/)
+- JavaScript 文档地址：[https://zh.javascript.info/](https://zh.javascript.info/)
+- ECMAScript 文档地址：[https://es6.ruanyifeng.com/](https://es6.ruanyifeng.com/)
+- TypeScript 文档地址：[https://typescript.bootcss.com/](https://typescript.bootcss.com/)
+- vue 文档地址：[https://v3.cn.vuejs.org/](https://v3.cn.vuejs.org/)
+- echarts 文档：[https://echarts.apache.org/zh/index.html](https://echarts.apache.org/zh/index.html)
 
 vue 3.0 官方文档学习
 
-- [] 开发环境搭建
-  - [] vue3.0 开发环境搭建
-  - [] Markdown 解析为 vue 组件
-  - [] 基础的示例环境构建
-  - [] 解析 Markdown 示例和代码块
 - [ ] 基础
   - [ ] 开发概览
   - [ ] 安装介绍
@@ -21,20 +24,20 @@ vue 3.0 官方文档学习
   - [ ] 表单输入绑定
   - [ ] 组件基础
 - [ ] 深入组件
-    - [ ] 组件注册
-    - [ ] Props
-    - [ ] 非 Prop 的 Attribute
-    - [ ] 自定义事件
-    - [ ] 插槽
-    - [ ] Provide / Inject
-    - [ ] 动态组件 & 异步组件
-    - [ ] 模板引用
-    - [ ] 处理边界情况
+  - [ ] 组件注册
+  - [ ] Props
+  - [ ] 非 Prop 的 Attribute
+  - [ ] 自定义事件
+  - [ ] 插槽
+  - [ ] Provide / Inject
+  - [ ] 动态组件 & 异步组件
+  - [ ] 模板引用
+  - [ ] 处理边界情况
 - [ ] 过渡 & 动画
-    - [ ] 过渡 & 动画概述
-    - [ ] 进入过渡 & 离开过渡
-    - [ ] 列表过渡
-    - [ ] 状态过渡
+  - [ ] 过渡 & 动画概述
+  - [ ] 进入过渡 & 离开过渡
+  - [ ] 列表过渡
+  - [ ] 状态过渡
 - [ ] 可复用 & 组合
   - [ ] 混入
   - [ ] 自定义指令
@@ -75,4 +78,3 @@ vue 3.0 官方文档学习
   - [ ] v-if 与 v-for的优先级对比
   - [ ] v-bind 合并行为
   - [ ] Watch on Arrays
-
