@@ -1,0 +1,33 @@
+@import "./generate";
+
+$-color--primary: #1f74ff !default;
+$-color--success: #46c93a !default;
+$-color--danger: #ff4757 !default;
+$-color--warning: #ffba00 !default;
+$-color--dark: #1e1e1e !default;
+$-color--white: #ffffff !default;
+
+$-color--primary-1: generateColor($-color--primary, 5, true) !default;
+$-color--primary-2: generateColor($-color--primary, 4, true) !default;
+$-color--primary-3: generateColor($-color--primary, 3, true) !default;
+$-color--primary-4: generateColor($-color--primary, 2, true) !default;
+$-color--primary-5: generateColor($-color--primary, 1, true) !default;
+$-color--primary-6: $-color--primary !default;
+$-color--primary-7: generateColor($-color--primary, 1, false) !default;
+$-color--primary-8: generateColor($-color--primary, 2, false) !default;
+$-color--primary-9: generateColor($-color--primary, 3, false) !default;
+$-color--primary-10: generateColor($-color--primary, 4, false) !default;
+
+$-color--text-primary: #333333 !default;
+$-color--text-regular: #666666 !default;
+$-color--text-secondary: #999999 !default;
+$-color--text-placeholder: #cccccc !default;
+
+$-color--border-base: #dcdfe6 !default;
+$-color--border-light: mix($-color--border-base, #ffffff, 80%) !default;
+$-color--border-lighter: mix($-color--border-base, #ffffff, 60%) !default;
+$-color--border-extra-light: mix($-color--border-base, #ffffff, 40%) !default;
+
+$-color--disabled-color: #cccccc !default;
+$-color--disabled-background-color: #f2f2f2 !default;
+$-color--disabled-border-color: #dcdfe6 !default;
