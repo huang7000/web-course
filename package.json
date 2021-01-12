@@ -38,9 +38,6 @@
     "markdown-it-container": "^3.0.0",
     "vue-loader": "^16.1.1"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
       "vue-cli-service lint",
