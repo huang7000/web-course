@@ -23,7 +23,7 @@ module.exports = {
       .loader("vue-loader")
       .end()
       .use("markdown-loader")
-      .loader(require("path").resolve(__dirname, "./build/script/markdown-loader.js"))
+      .loader(require("path").resolve(__dirname, "build/scripts/markdown-loader.js"))
       .end();
   }
 };
