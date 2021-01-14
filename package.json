@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "icons": "node scripts/iconfont-to-scss.js",
+    "snippet": "node scripts/scss-to-snippet.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",

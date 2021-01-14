@@ -1,4 +1,5 @@
 module.exports = {
+  lintOnSave: false,//是否开启eslint检测
   pages: {
     index: {
       entry: "src/main.ts"
