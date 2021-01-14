@@ -8,7 +8,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         implementation: require("node-sass"),
-        additionalData: "@import 'src/components/color/src/index.scss';"
+        additionalData: "@import 'build/color/src/index.scss';"
       }
     }
   },
@@ -23,7 +23,7 @@ module.exports = {
       .loader("vue-loader")
       .end()
       .use("markdown-loader")
-      .loader(require("path").resolve(__dirname, "./build/markdown-loader.js"))
+      .loader(require("path").resolve(__dirname, "./build/script/markdown-loader.js"))
       .end();
   }
 };

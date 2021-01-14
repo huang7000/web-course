@@ -4,10 +4,17 @@ import router from "./router";
 import store from "./store";
 const app = createApp(App);
 
-import VcMarkdownView from "./components/markdown-view.vue";
+// import VcMarkdownView from "./components/markdown-view.vue";
+// app.component(VcMarkdownView.name as string, VcMarkdownView);
+
+// import VcCodeSnippet from "./components/code-snippet.vue";
+// app.component(VcCodeSnippet.name as string, VcCodeSnippet);
+
+
+import VcMarkdownView from "../build/components/markdown-view.vue";
 app.component(VcMarkdownView.name as string, VcMarkdownView);
 
-import VcCodeSnippet from "./components/code-snippet.vue";
+import VcCodeSnippet from "../build/components/code-snippet.vue";
 app.component(VcCodeSnippet.name as string, VcCodeSnippet);
 
 app

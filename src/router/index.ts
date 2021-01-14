@@ -18,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/test",
-    component: () => import("/course/03vue/01vue3/00.md")
+    component: () => import("../views/00.md")
   }
 ];
 
