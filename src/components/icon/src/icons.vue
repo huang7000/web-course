@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
-import iconList from "../components/icon/src/iconfont";
+import iconList from "./iconfont";
 
 export default defineComponent({
   name: "VcIconView",
