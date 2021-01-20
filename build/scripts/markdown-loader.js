@@ -54,7 +54,9 @@ module.exports = function(source) {
   const vueComponentList = [];
   const vueStyleList = [];
 
-  // 解析markdown的 【:::danger 内容 ::::】 格式
+  // note笔记默认显示源码隐藏效果 
+  // component组件默认显示效果隐藏源码
+  // 解析markdown的 【:::snippet 内容 ::::】 格式
   markdownIt.use(MarkdownItContainer, "snippet", {
     // 验证代码块为【:::snippet :::】才进行渲染
     validate(params) {
@@ -82,8 +84,8 @@ module.exports = function(source) {
         const componentStyle = snippetToVueStyle(content, hashCode);
         vueStyleList.push(componentStyle);
         // 将需要渲染的示例用nc-snippet组件包裹替换插槽显示示例效果
-        return `<vc-code-snippet>
-                  <template #description>${desccriptionHtml}</template>
+        return `<vc-code-snippet :showCode="true">
+                  <template #description >${desccriptionHtml}</template>
                   <template #example>
                     <${componentName} />
                   </template>
@@ -93,6 +95,7 @@ module.exports = function(source) {
                 </vc-code-snippet>`;
     }
   });
+
   return `<template>
             <vc-markdown-view>
               ${markdownIt.render(source)}

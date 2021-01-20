@@ -1,11 +1,15 @@
 <template>
   <div class="vc-code-snippet">
-    <div :class="exampleClasses">
+    <div :class="exampleClasses" v-show="showRun">
       <slot name="example" />
     </div>
+
     <div class="vc-code-snippet--desc">
+      <div class="vc-code-snippet-left--operate" @click="handleRunClick">
+        <v-icon :type="runIcon"></v-icon>
+      </div>
       <slot name="description" />
-      <div class="vc-code-snippet--operate" @click="handleIconClick">
+      <div class="vc-code-snippet-right--operate" @click="handleCodeClick">
         <v-icon :type="codeIcon"></v-icon>
       </div>
     </div>
@@ -33,9 +37,20 @@ import { useRoute } from "vue-router";
 
 export default defineComponent({
   name: "VcCodeSnippet",
-  setup() {
-    const showCode = ref(false);
-
+  props: {
+    showCode: {
+      type: Boolean,
+      default: false,
+    },
+    showRun: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  setup(props) {
+    //const showCode = ref(false);
+    //showCode是否显示或者隐藏改成由props
+    const showCode = ref(props.showCode);
     const codeIcon = computed(() => {
       return showCode.value ? "code-collapse" : "code-expand";
     });
@@ -44,12 +59,21 @@ export default defineComponent({
     const exampleClasses = computed(() => {
       return [
         "vc-code-snippet--example",
-        `vc-code-snippet--${route.path.split("/").join("-")}`
+        `vc-code-snippet--${route.path.split("/").join("-")}`,
       ];
     });
 
-    const handleIconClick = () => {
+    const handleCodeClick = () => {
       showCode.value = !showCode.value;
+    };
+    const showRun = ref(props.showRun);
+
+    const runIcon = computed(() => {
+      return showRun.value ? "poweroff" : "poweroff-circle-fill";
+    });
+
+    const handleRunClick = () => {
+      showRun.value = !showRun.value;
     };
 
     const codeEl = ref<HTMLDivElement>();
@@ -70,14 +94,17 @@ export default defineComponent({
     return {
       showCode,
       codeIcon,
-      handleIconClick,
+      showRun,
+      runIcon,
+      handleCodeClick,
+      handleRunClick,
       exampleClasses,
       codeEl,
       transitionBeforeEnter,
       transitionEnter,
-      transitionAfterEnter
+      transitionAfterEnter,
     };
-  }
+  },
 });
 </script>
 
@@ -113,10 +140,27 @@ export default defineComponent({
   font-size: 14px;
   line-height: 1.5;
 }
+.vc-code-snippet--desc {
+  p.vc-markdown-doc {
+     position: absolute;
+    left: 36px;
+  }
+}
 
-.vc-code-snippet--operate {
+.vc-code-snippet-right--operate {
   position: absolute;
   right: 16px;
+  bottom: 13px;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+.vc-code-snippet-left--operate {
+  position: absolute;
+  left: 16px;
   bottom: 13px;
   width: 18px;
   height: 18px;
