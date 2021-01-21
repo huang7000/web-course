@@ -1,9 +1,22 @@
 <template>
   <div class="vc-code-snippet">
-    <div :class="exampleClasses" v-show="showRun">
-      <slot name="example" />
-    </div>
+    <!-- 运行效果 -->
+    <transition
+      leave-active-class="vc-code-snippet-run--transition"
+      enter-active-class="vc-code-snippet-run--transition"
+      @before-enter="transitionRunBeforeEnter"
+      @enter="transitionRunEnter"
+      @after-enter="transitionRunAfterEnter"
+      @before-leave="transitionRunEnter"
+      @leave="transitionBeforeRunEnter"
+      @after-leave="transitionRunAfterEnter"
+    >
+      <div :class="exampleClasses" v-show="showRun" class="vc-code-snippet--example" ref="runEl">
+        <slot name="example" />
+      </div>
+    </transition>
 
+    <!-- 描述 -->
     <div class="vc-code-snippet--desc">
       <div class="vc-code-snippet-left--operate" @click="handleRunClick">
         <v-icon :type="runIcon"></v-icon>
@@ -13,15 +26,16 @@
         <v-icon :type="codeIcon"></v-icon>
       </div>
     </div>
+    <!-- 源码 -->
     <transition
-      leave-active-class="vc-code-snippet--transition"
-      enter-active-class="vc-code-snippet--transition"
-      @before-enter="transitionBeforeEnter"
-      @enter="transitionEnter"
-      @after-enter="transitionAfterEnter"
-      @before-leave="transitionEnter"
-      @leave="transitionBeforeEnter"
-      @after-leave="transitionAfterEnter"
+      leave-active-class="vc-code-snippet-code--transition"
+      enter-active-class="vc-code-snippet-code--transition"
+      @before-enter="transitionCodeBeforeEnter"
+      @enter="transitionCodeEnter"
+      @after-enter="transitionCodeAfterEnter"
+      @before-leave="transitionCodeEnter"
+      @leave="transitionBeforeCodeEnter"
+      @after-leave="transitionCodeAfterEnter"
     >
       <div v-show="showCode" class="vc-code-snippet--code" ref="codeEl">
         <slot name="source" />
@@ -78,16 +92,31 @@ export default defineComponent({
 
     const codeEl = ref<HTMLDivElement>();
 
-    const transitionBeforeEnter = (el: HTMLElement) => {
+    const transitionCodeBeforeEnter = (el: HTMLElement) => {
       el.style.maxHeight = "0px";
     };
 
-    const transitionEnter = (el: HTMLElement) => {
+    const transitionCodeEnter = (el: HTMLElement) => {
       if (!codeEl.value) return;
       el.style.maxHeight = `${codeEl.value.scrollHeight}px`;
     };
 
-    const transitionAfterEnter = (el: HTMLElement) => {
+    const transitionCodeAfterEnter = (el: HTMLElement) => {
+      el.style.maxHeight = "auto";
+    };
+
+    const runEl = ref<HTMLDivElement>();
+
+    const transitionRunBeforeEnter = (el: HTMLElement) => {
+      el.style.maxHeight = "0px";
+    };
+
+    const transitionRunEnter = (el: HTMLElement) => {
+      if (!runEl.value) return;
+      el.style.maxHeight = `${runEl.value.scrollHeight+1}px`;
+    };
+
+    const transitionRunAfterEnter = (el: HTMLElement) => {
       el.style.maxHeight = "auto";
     };
 
@@ -100,9 +129,13 @@ export default defineComponent({
       handleRunClick,
       exampleClasses,
       codeEl,
-      transitionBeforeEnter,
-      transitionEnter,
-      transitionAfterEnter,
+      transitionCodeBeforeEnter,
+      transitionCodeEnter,
+      transitionCodeAfterEnter,
+      runEl,
+      transitionRunBeforeEnter,
+      transitionRunEnter,
+      transitionRunAfterEnter,
     };
   },
 });
@@ -125,10 +158,10 @@ export default defineComponent({
 
 .vc-code-snippet--example {
   box-sizing: border-box;
-  padding: 26px 32px;
+  padding: 20px 24px;
   color: $-color--text-primary;
   border-bottom: 1px solid $-color--border-light;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .vc-code-snippet--desc {
@@ -142,7 +175,7 @@ export default defineComponent({
 }
 .vc-code-snippet--desc {
   p.vc-markdown-doc {
-     position: absolute;
+    position: absolute;
     left: 36px;
   }
 }
@@ -182,10 +215,12 @@ export default defineComponent({
   }
 }
 
-.vc-code-snippet--transition {
+.vc-code-snippet-code--transition {
   transition: 0.25s max-height ease-in-out;
 }
-
+.vc-code-snippet-run--transition {
+  transition: 0.25s max-height ease-in-out;
+}
 .vc-code-snippet---component {
   &-icon {
     font-size: 32px;
