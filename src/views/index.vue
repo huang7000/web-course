@@ -2,7 +2,7 @@
   <div class="vs-index">
     <div class="vs-index--header">
       <img class="vs-index--header-logo" src="../assets/logo.png" alt="logo" />
-      <div class="vs-index--header-title">VOCE</div>
+      <div class="vs-index--header-title">course</div>
     </div>
     <div class="vs-index--left">
       <vc-index-menu
@@ -22,38 +22,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import VcIndexMenu from "../../build/components/index-menu.vue";
-
+import javascript from "../router/jsRouter";
 export default defineComponent({
   components: { VcIndexMenu },
   setup() {
-    const menuList = [
-      {
-        title: "vue",
-        children: [
-          {
-            title: "通用",
-            children: [
-              {
-                path: "/vue00",
-                title: "test",
-                subtitle: "",
-              },
-              {
-                path: "/vue01",
-                title: "安装介绍",
-                subtitle: "",
-              },
-              {
-                path: "/vue02",
-                title: "应用&组件实例",
-                subtitle: "",
-              },
-            ],
-          },
-        ],
-      },
-    ];
-
+    const menuList = javascript.menus;
     return { menuList };
   },
 });
