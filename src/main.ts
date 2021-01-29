@@ -20,6 +20,10 @@ app.component(VcCodeSnippet.name as string, VcCodeSnippet);
 
 import VcIconView from "./components/icon/src/icons.vue";
 app.component(VcIconView.name as string, VcIconView);
+
+import codepenSnippet from "../build/components/codepen-snippet.vue";
+app.component("codepenSnippet" as string, codepenSnippet);
+
 import Icon from "./components/icon";
 app.use(Icon);
 app
