@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>JavaScript Demo</h1>
+  <p id="app">显示内容</p>
+  <button onclick="btnClick()">点击</button>
+  <button onclick="backClick()">回退</button>
+</body>
+<script>
+  let script = document.createElement("script");
+  script.src = "index.js";
+  document.head.appendChild(script);
+  //   Undefined、Null、Boolean、Number、
+  // String 和 Symbol。
+
+  let found = true;
+  let lost = false;
+  console.log(found == 1)
+  console.log(lost == 0)
+  console.log(found === 1)
+  console.log(lost === 0)
+  console.log(found == 0)
+  console.log(lost == 1)
+  console.log(found === 0)
+  console.log(lost === 1)
+</script>
+
+</html>
