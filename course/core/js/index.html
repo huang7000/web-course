@@ -3,14 +3,46 @@
 
 <body>
   <h1>JavaScript Demo</h1>
-  <p id="app">显示内容</p>
-  <button onclick="btnClick()">点击</button>
-  <button onclick="backClick()">回退</button>
+  <script>
+    let i = 5;
+    switch (i) {
+      case 25:
+        console.log("25");
+        break;
+      case 35:
+        console.log("35");
+        break;
+      case 45:
+        console.log("45");
+        break;
+      default:
+        console.log("Other");
+    }
+    switch ("hello world") {
+      case "hello" + " world":
+        console.log("hello world was found.");
+        break;
+      case "goodbye":
+        console.log("goodbye was found.");
+        break;
+      default:
+        console.log("Unexpected message was found.");
+    }
+    let num = 25;
+    switch (true) {
+      case num < 0:
+        console.log("Less than 0.");
+        break;
+      case num >= 0 && num <= 10:
+        console.log("Between 0 and 10.");
+        break;
+      case num > 10 && num <= 20:
+        console.log("Between 10 and 20.");
+        break;
+      default:
+        console.log("More than 20.");
+    }
+  </script>
 </body>
-<script>
-
-
-  console.log("http://127.0.0.1:5500/index.html");
-</script>
 
 </html>
