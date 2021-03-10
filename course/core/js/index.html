@@ -4,44 +4,11 @@
 <body>
   <h1>JavaScript Demo</h1>
   <script>
-    let i = 5;
-    switch (i) {
-      case 25:
-        console.log("25");
-        break;
-      case 35:
-        console.log("35");
-        break;
-      case 45:
-        console.log("45");
-        break;
-      default:
-        console.log("Other");
-    }
-    switch ("hello world") {
-      case "hello" + " world":
-        console.log("hello world was found.");
-        break;
-      case "goodbye":
-        console.log("goodbye was found.");
-        break;
-      default:
-        console.log("Unexpected message was found.");
-    }
-    let num = 25;
-    switch (true) {
-      case num < 0:
-        console.log("Less than 0.");
-        break;
-      case num >= 0 && num <= 10:
-        console.log("Between 0 and 10.");
-        break;
-      case num > 10 && num <= 20:
-        console.log("Between 10 and 20.");
-        break;
-      default:
-        console.log("More than 20.");
-    }
+    let result1 = 5 > 3; // true 
+    let result2 = 5 < 3; // false.
+    let result3 = "Brick" < "alphabet"; // true
+    let result4 = "brick" < "alphabet"; // false
+    console.log([result1, result2, result3, result4])
   </script>
 </body>
 
