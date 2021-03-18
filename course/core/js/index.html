@@ -4,16 +4,18 @@
 <body>
   <h1>JavaScript Demo</h1>
   <script>
-    //Date.parse()和 Date.UTC()
-    let today = new Date();//获取当前时间
-    let date1 = new Date("1900-10-10");
-    let date1 = new Date(-2184624000000);
-    let date1 = new Date("1900-10-10");
-    let date1 = new Date("1900-10-10");
-    console.log(today.getTime());
-    console.log(old.getTime());
-    // 1615620700745
-    //-2184624000000
+    let message = "foobarbaz";
+    console.log(message.startsWith("foo")); // true 
+    console.log(message.startsWith("foo", 1)); // false 
+    console.log(message.startsWith("bar")); // false 
+
+    console.log(message.endsWith("baz")); // true 
+    console.log(message.endsWith("baz", 4)); // false 
+    console.log(message.endsWith("bar")); // false 
+
+    console.log(message.includes("bar")); // true 
+    console.log(message.includes("bar", 4)); // false
+    console.log(message.sub()); // false
   </script>
 </body>
 
