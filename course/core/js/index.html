@@ -4,14 +4,14 @@
 <body>
   <h1>JavaScript Demo</h1>
   <script>
-let text = "cat, bat, sat, fat"; 
-let pattern = /.at/; 
-// 等价于 pattern.exec(text) 
-let matches = text.match(pattern); 
-console.log(matches.index); // 0 
-console.log(matches[0]); // "cat" 
-console.log(pattern.lastIndex); // 0
-console.log(text.matchAll("at"))
+    let max = Math.max(3, 54, 32, 16);
+    console.log(max); // 54 
+    let min = Math.min(3, 54, 32, 16);
+    console.log(min); // 3
+    let min2 = Math.min([3, 54, 32, 16]);
+    console.log(min2); // NaN
+    let min3 = Math.min(...[3, 54, 32, 16]);
+    console.log(min3); // 3
   </script>
 </body>
 
