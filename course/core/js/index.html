@@ -3,15 +3,28 @@
 
 <body>
   <h1>JavaScript Demo</h1>
+  https://stackblitz.com/
+  https://codesandbox.io/
   <script>
-    let max = Math.max(3, 54, 32, 16);
-    console.log(max); // 54 
-    let min = Math.min(3, 54, 32, 16);
-    console.log(min); // 3
-    let min2 = Math.min([3, 54, 32, 16]);
-    console.log(min2); // NaN
-    let min3 = Math.min(...[3, 54, 32, 16]);
-    console.log(min3); // 3
+    let values = [1, 2, 3, 4, 5];
+    let sum = values.reduce((prev, cur, index, array) => prev + cur);
+    console.log(sum); // 15
+
+    let arr = [
+      { value: 10, name: "小白" },
+      { value: 11, name: "小白" },
+      { value: 12, name: "小白" },
+      { value: 13, name: "小白" },
+      { value: 14, name: "小白" }
+    ];
+    let sum3 = arr.reduce(function (prev, cur, index, array) {
+      if (prev["value"]) {
+        return prev["value"] + cur["value"];
+      } else {
+        return prev + cur["value"];
+      }
+    });
+    console.log(sum3); // 60
   </script>
 </body>
 
