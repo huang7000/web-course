@@ -6,25 +6,24 @@
   https://stackblitz.com/
   https://codesandbox.io/
   <script>
-    let values = [1, 2, 3, 4, 5];
-    let sum = values.reduce((prev, cur, index, array) => prev + cur);
-    console.log(sum); // 15
+    let values = [1, 2, 33, 4, 5];
+    // reverse()根据索引反向排序不是大小
+    values = [1, 4, 5, 2, 33];
+    values.reverse();
+    console.log(values); // [3, 2, 5, 4, 1]
 
-    let arr = [
-      { value: 10, name: "小白" },
-      { value: 11, name: "小白" },
-      { value: 12, name: "小白" },
-      { value: 13, name: "小白" },
-      { value: 14, name: "小白" }
-    ];
-    let sum3 = arr.reduce(function (prev, cur, index, array) {
-      if (prev["value"]) {
-        return prev["value"] + cur["value"];
-      } else {
-        return prev + cur["value"];
-      }
-    });
-    console.log(sum3); // 60
+    // sort()会在每一项上调用 String()转型函数，然后比较字符串来决定顺序。即
+    values = [1, 4, 5, 2, 33];
+    values.sort();
+    console.log(values); // [1, 2, 33, 4, 5]
+
+    values = [1, 4, 5, 2, 33];
+    values.sort((a, b) => a - b < 0);
+    console.log(values); // [1, 2, 33, 4, 5]
+
+    values = [1, 4, 5, 2, 33];
+    values.sort((a, b) => a - b > 0);
+    console.log(values); // [1, 2, 33, 4, 5]
   </script>
 </body>
 
