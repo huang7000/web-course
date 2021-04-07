@@ -5,26 +5,24 @@
   <h1>JavaScript Demo</h1>
   https://stackblitz.com/
   https://codesandbox.io/
+  <div id="counter">
+    Counter: {{ message }}
+  </div>
+
   <script>
-    let values = [1, 2, 33, 4, 5];
-    // reverse()根据索引反向排序不是大小
-    values = [1, 4, 5, 2, 33];
-    values.reverse();
-    console.log(values); // [3, 2, 5, 4, 1]
-
-    // sort()会在每一项上调用 String()转型函数，然后比较字符串来决定顺序。即
-    values = [1, 4, 5, 2, 33];
-    values.sort();
-    console.log(values); // [1, 2, 33, 4, 5]
-
-    values = [1, 4, 5, 2, 33];
-    values.sort((a, b) => a - b < 0);
-    console.log(values); // [1, 2, 33, 4, 5]
-
-    values = [1, 4, 5, 2, 33];
-    values.sort((a, b) => a - b > 0);
-    console.log(values); // [1, 2, 33, 4, 5]
+    let obj = {
+      name: "Nicholas",
+      age: 29
+    };
+    for (let key in obj) {
+      console.log(key); // newKey
+      // key = "456";
+      // console.log(key); // newKey
+      // console.log(obj.key); // val1
+    }
+    console.log(obj);
   </script>
+
 </body>
 
 </html>
