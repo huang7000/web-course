@@ -10,17 +10,16 @@
   </div>
 
   <script>
-    let obj = {
-      name: "Nicholas",
-      age: 29
-    };
-    for (let key in obj) {
-      console.log(key); // newKey
-      // key = "456";
-      // console.log(key); // newKey
-      // console.log(obj.key); // val1
-    }
-    console.log(obj);
+    const key1 = {id: 1}, 
+ key2 = {id: 2},
+
+ key3 = {id: 3}; 
+const wm1 = new WeakMap([ 
+ [key1, "val1"], 
+ [key2, "val2"], 
+ [key3, "val3"] 
+]); 
+console.log(wm1.size)
   </script>
 
 </body>
