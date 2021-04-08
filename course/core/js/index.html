@@ -10,16 +10,33 @@
   </div>
 
   <script>
-    const key1 = {id: 1}, 
- key2 = {id: 2},
+    // 使用对象解构
+    let person = {
+      name: 'Matt',
+      age: 27
+    };
+    let { name: personName, age: personAge } = person;
+    console.log(personName); // Matt 
+    console.log(personAge); // 27
+    //console.log(age); // Uncaught ReferenceError: age is not defined 
+    //解构赋值不一定与对象的属性匹配。赋值的时候可以忽略某些属性，而如果引用的属性不存在，则该变量的值就是 undefined
+    //也可以在解构赋值的同时定义默认值
+    let { name1, job, job1 = 'Software engineer' } = person;
+    console.log(name1); // Matt 
+    console.log(job); // undefined
+    console.log(job1); // Software engineer
+    //解构在内部使用函数 ToObject()（不能在运行时环境中直接访问）把源数据结构转换为对象。
+    //null和 undefined 不能被解构，否则会抛出错误。
 
- key3 = {id: 3}; 
-const wm1 = new WeakMap([ 
- [key1, "val1"], 
- [key2, "val2"], 
- [key3, "val3"] 
-]); 
-console.log(wm1.size)
+    let { length } = 'foobar';
+    console.log(length); // 6 
+    let { constructor: c } = 4;
+    console.log(c === Number); // true 
+    //let { nullValue } = null; // TypeError
+    //解构并不要求变量必须在解构表达式中声明。不过，如果是给事先声明的变量赋值，则赋值表达式必须包含在一对括号中：
+    let personName1, personAge1;
+    ({ name: personName1, age: personAge1 } = person);
+    console.log(personName1, personAge1); // Matt, 27
   </script>
 
 </body>
