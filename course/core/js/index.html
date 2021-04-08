@@ -10,33 +10,27 @@
   </div>
 
   <script>
-    // 使用对象解构
-    let person = {
-      name: 'Matt',
-      age: 27
-    };
-    let { name: personName, age: personAge } = person;
-    console.log(personName); // Matt 
-    console.log(personAge); // 27
-    //console.log(age); // Uncaught ReferenceError: age is not defined 
-    //解构赋值不一定与对象的属性匹配。赋值的时候可以忽略某些属性，而如果引用的属性不存在，则该变量的值就是 undefined
-    //也可以在解构赋值的同时定义默认值
-    let { name1, job, job1 = 'Software engineer' } = person;
-    console.log(name1); // Matt 
-    console.log(job); // undefined
-    console.log(job1); // Software engineer
-    //解构在内部使用函数 ToObject()（不能在运行时环境中直接访问）把源数据结构转换为对象。
-    //null和 undefined 不能被解构，否则会抛出错误。
-
-    let { length } = 'foobar';
-    console.log(length); // 6 
-    let { constructor: c } = 4;
-    console.log(c === Number); // true 
-    //let { nullValue } = null; // TypeError
-    //解构并不要求变量必须在解构表达式中声明。不过，如果是给事先声明的变量赋值，则赋值表达式必须包含在一对括号中：
-    let personName1, personAge1;
-    ({ name: personName1, age: personAge1 } = person);
-    console.log(personName1, personAge1); // Matt, 27
+    //实例成员
+    class Person {
+      constructor() {
+        // 这个例子先使用对象包装类型定义一个字符串
+        // 为的是在下面测试两个对象的相等性
+        this.name = new String("Jack");
+        this.sayName = () => console.log(this.name);
+        this.nicknames = ["Jake", "J-Dog"];
+      }
+    }
+    let p1 = new Person(),
+      p2 = new Person();
+    p1.sayName(); // Jack
+    p2.sayName(); // Jack
+    console.log(p1.name === p2.name); // false
+    console.log(p1.sayName === p2.sayName); // false
+    console.log(p1.nicknames === p2.nicknames); // false
+    p1.name = p1.nicknames[0];
+    p2.name = p2.nicknames[1];
+    p1.sayName(); // Jake
+    p2.sayName(); // J-Dog
   </script>
 
 </body>
