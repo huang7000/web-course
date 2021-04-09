@@ -22,16 +22,17 @@
   </div>
 
   <script>
-    const myTarget = {};
-    const proxy = new Proxy(myTarget, {
-      setPrototypeOf(target, prototype) {
-        console.log("setPrototypeOf()");
-        return Reflect.setPrototypeOf(...arguments);
-      }
-    });
-    Object.setPrototypeOf(proxy, Object);// setPrototypeOf()
-    console.log(Object.setPrototypeOf(proxy, Object));
-
+//递归阶乘函数
+function factorial(num) {
+  if (num <= 1) {
+    return 1;
+  } else {
+    return num * factorial(num - 1);
+  }
+}
+let anotherFactorial = factorial;
+factorial = null;//Error: factorial is not a function
+console.log(anotherFactorial(4)); // 报错
   </script>
 
 </body>
