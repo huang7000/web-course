@@ -22,39 +22,16 @@
   </div>
 
   <script>
-    function median(...nums) {
-      return nums.sort()[Math.floor(nums.length / 2)];
-    }
-    const proxy = new Proxy(median, {
-      apply(target, thisArg, argumentsList) {
-        for (const arg of argumentsList) {
-          if (typeof arg !== "number") {
-            throw "Non-number argument provided";
-          }
-        }
-        return Reflect.apply(...arguments);
+    const myTarget = {};
+    const proxy = new Proxy(myTarget, {
+      setPrototypeOf(target, prototype) {
+        console.log("setPrototypeOf()");
+        return Reflect.setPrototypeOf(...arguments);
       }
     });
-    console.log(proxy(4, 7, 1)); // 4
-    //console.log(proxy(4, "test", 1));
-    // Error: Non-number argument provided
-    class User {
-      constructor(id) {
-        this.id_ = id;
-      }
-    }
-    const proxyClass = new Proxy(User, {
-      construct(target, argumentsList, newTarget) {
-        if (argumentsList[0] === undefined) {
-          throw 'User cannot be instantiated without id';
-        } else {
-          console.log("success");
-          return Reflect.construct(...arguments);
-        }
-      }
-    });
-    new proxyClass(1);// success
-    new proxyClass();// Error: User cannot be instantiated without id
+    Object.setPrototypeOf(proxy, Object);// setPrototypeOf()
+    console.log(Object.setPrototypeOf(proxy, Object));
+
   </script>
 
 </body>
