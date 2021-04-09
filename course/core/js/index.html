@@ -6,43 +6,67 @@
   https://stackblitz.com/
   https://codesandbox.io/
   <div id="counter">
-   0409 第09章 第10章
-   0410 第11章 第12章
-   0411 第13章 第14章
-   0412 第15章 
-   0413 第16章 
-   0414 第17章 
-   0415 第18章 
-   0416 第19章 
-   0417 第20章 第21章
-   0418 第22章 第23章
-   0419 第24章 
-   0420 第25章 
-   0421 第26章 
+    0409 第09章 第10章
+    0410 第11章 第12章
+    0411 第13章 第14章
+    0412 第15章
+    0413 第16章
+    0414 第17章
+    0415 第18章
+    0416 第19章
+    0417 第20章 第21章
+    0418 第22章 第23章
+    0419 第24章
+    0420 第25章
+    0421 第26章
   </div>
 
   <script>
-    //实例成员
-    class Person {
-      constructor() {
-        // 这个例子先使用对象包装类型定义一个字符串
-        // 为的是在下面测试两个对象的相等性
-        this.name = new String("Jack");
-        this.sayName = () => console.log(this.name);
-        this.nicknames = ["Jake", "J-Dog"];
+    const target = {
+      id: "target",
+      name: "test",
+      obj: {
+        objId: "1",
+        objName: "objTest"
       }
-    }
-    let p1 = new Person(),
-      p2 = new Person();
-    p1.sayName(); // Jack
-    p2.sayName(); // Jack
-    console.log(p1.name === p2.name); // false
-    console.log(p1.sayName === p2.sayName); // false
-    console.log(p1.nicknames === p2.nicknames); // false
-    p1.name = p1.nicknames[0];
-    p2.name = p2.nicknames[1];
-    p1.sayName(); // Jake
-    p2.sayName(); // J-Dog
+    };
+    const handler = {};
+    const proxy = new Proxy(target, handler);
+    // 严格相等可以用来区分代理和目标
+    console.log(target === proxy); // false
+    console.log(target);// {id: "target", name: "test", obj: { objId: "1",objName: "objTest"}}
+    console.log(handler);//{}
+    console.log(proxy);//Proxy {id: "target", name: "test", obj: { objId: "1",objName: "objTest"}}
+    console.log(target.obj === proxy.obj); // true
+    console.log(target.name === proxy.name); // true
+    console.log(target.id === proxy.id); // true
+    // id 属性会访问同一个值
+    console.log(target.id); // target
+    console.log(proxy.id); // target
+    // 给目标属性赋值会反映在两个对象上
+    // 因为两个对象访问的是同一个值
+    target.id = "foo";
+    console.log(target.id); // foo
+    console.log(proxy.id); // foo
+    // 给代理属性赋值会反映在两个对象上
+    // 因为这个赋值会转移到目标对象
+    proxy.id = "bar";
+    console.log(target.id); // bar
+    console.log(proxy.id); // bar
+    // hasOwnProperty()方法在两个地方
+    // 都会应用到目标对象
+    console.log(target.hasOwnProperty("id")); // true
+    console.log(proxy.hasOwnProperty("id")); // true
+    console.log(typeof (target));//object
+    console.log(typeof (proxy));//object
+    // Proxy.prototype 是 undefined
+    // 因此不能使用 instanceof 操作符
+    // console.log(target instanceof Proxy); 
+    // TypeError: Function has non-object prototype 'undefined' in instanceof check
+    // console.log(proxy instanceof Proxy); 
+    // TypeError: Function has non-object prototype 'undefined' in instanceof check
+
+
   </script>
 
 </body>
