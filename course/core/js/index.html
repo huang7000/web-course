@@ -22,51 +22,39 @@
   </div>
 
   <script>
-    const target = {
-      id: "target",
-      name: "test",
-      obj: {
-        objId: "1",
-        objName: "objTest"
+    function median(...nums) {
+      return nums.sort()[Math.floor(nums.length / 2)];
+    }
+    const proxy = new Proxy(median, {
+      apply(target, thisArg, argumentsList) {
+        for (const arg of argumentsList) {
+          if (typeof arg !== "number") {
+            throw "Non-number argument provided";
+          }
+        }
+        return Reflect.apply(...arguments);
       }
-    };
-    const handler = {};
-    const proxy = new Proxy(target, handler);
-    // 严格相等可以用来区分代理和目标
-    console.log(target === proxy); // false
-    console.log(target);// {id: "target", name: "test", obj: { objId: "1",objName: "objTest"}}
-    console.log(handler);//{}
-    console.log(proxy);//Proxy {id: "target", name: "test", obj: { objId: "1",objName: "objTest"}}
-    console.log(target.obj === proxy.obj); // true
-    console.log(target.name === proxy.name); // true
-    console.log(target.id === proxy.id); // true
-    // id 属性会访问同一个值
-    console.log(target.id); // target
-    console.log(proxy.id); // target
-    // 给目标属性赋值会反映在两个对象上
-    // 因为两个对象访问的是同一个值
-    target.id = "foo";
-    console.log(target.id); // foo
-    console.log(proxy.id); // foo
-    // 给代理属性赋值会反映在两个对象上
-    // 因为这个赋值会转移到目标对象
-    proxy.id = "bar";
-    console.log(target.id); // bar
-    console.log(proxy.id); // bar
-    // hasOwnProperty()方法在两个地方
-    // 都会应用到目标对象
-    console.log(target.hasOwnProperty("id")); // true
-    console.log(proxy.hasOwnProperty("id")); // true
-    console.log(typeof (target));//object
-    console.log(typeof (proxy));//object
-    // Proxy.prototype 是 undefined
-    // 因此不能使用 instanceof 操作符
-    // console.log(target instanceof Proxy); 
-    // TypeError: Function has non-object prototype 'undefined' in instanceof check
-    // console.log(proxy instanceof Proxy); 
-    // TypeError: Function has non-object prototype 'undefined' in instanceof check
-
-
+    });
+    console.log(proxy(4, 7, 1)); // 4
+    //console.log(proxy(4, "test", 1));
+    // Error: Non-number argument provided
+    class User {
+      constructor(id) {
+        this.id_ = id;
+      }
+    }
+    const proxyClass = new Proxy(User, {
+      construct(target, argumentsList, newTarget) {
+        if (argumentsList[0] === undefined) {
+          throw 'User cannot be instantiated without id';
+        } else {
+          console.log("success");
+          return Reflect.construct(...arguments);
+        }
+      }
+    });
+    new proxyClass(1);// success
+    new proxyClass();// Error: User cannot be instantiated without id
   </script>
 
 </body>
