@@ -13,14 +13,6 @@
       </tr>
       <tr>
         <td>
-          0410
-        </td>
-        <td>
-          第10章
-        </td>
-      </tr>
-      <tr>
-        <td>
           0411
         </td>
         <td>
@@ -159,19 +151,19 @@
   </div>
 
   <script>
-    "use strict";
-    window.identity = "The Window";
-    let object = {
-      identity: "My Object",
-      getIdentityFunc() {
-        return function () {
-          return this.identity;
-        };
-      }
-    };
-    console.log(object.getIdentityFunc()()); // 'The Window'
-
-
+    new Promise((resolve, reject) => {
+      console.log("begin asynchronous execution");
+      reject(Error("bar"));
+    })
+      .catch(e => {
+        console.log("caught error", e);
+      })
+      .then(() => {
+        console.log("continue asynchronous execution");
+      });
+// begin asynchronous execution
+// caught error Error: bar
+// continue asynchronous execution
 
   </script>
 
