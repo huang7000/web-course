@@ -13,14 +13,6 @@
       </tr>
       <tr>
         <td>
-          0411
-        </td>
-        <td>
-          第11章
-        </td>
-      </tr>
-      <tr>
-        <td>
           0412
         </td>
         <td>
@@ -149,22 +141,20 @@
       </tr>
     </table>
   </div>
-
+  <button id="start">Start</button> 
+  <button id="cancel">Cancel</button>
   <script>
-    new Promise((resolve, reject) => {
-      console.log("begin asynchronous execution");
-      reject(Error("bar"));
-    })
-      .catch(e => {
-        console.log("caught error", e);
-      })
-      .then(() => {
-        console.log("continue asynchronous execution");
-      });
-// begin asynchronous execution
-// caught error Error: bar
-// continue asynchronous execution
-
+function fooPromiseExecutor(resolve, reject) { 
+ setTimeout(reject, 1000, 'bar'); 
+} 
+async function foo() { 
+ await new Promise(fooPromiseExecutor); 
+} 
+foo(); 
+// Uncaught (in promise) bar 
+// foo
+// async function (async) 
+// foo
   </script>
 
 </body>
