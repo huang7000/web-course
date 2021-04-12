@@ -336,3 +336,45 @@ document.body.appendChild(el);
 ```
 
 :::
+
+:::code 尾调用优化的代码 递归
+
+```js
+//计算斐波纳契数列的函数
+"use strict";
+// 阶乘
+// 不推荐写法
+function factorial(n) {
+  if (n === 1) return 1;
+  return n * factorial(n - 1);
+}
+console.log(factorial(10)); // 120
+
+// 尾调优化 推荐
+function factorialTrue(n, total = 1) {
+  if (n === 1) return total;
+  return factorialTrue(n - 1, n * total);
+}
+console.log(factorialTrue(10)); // 3628800
+
+// 斐波纳契数列
+// 不推荐写法
+function fibonacci(n) {
+  if (n < 2) {
+    return n;
+  }
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+console.log(fibonacci(25)); // 75025
+//console.log(fibonacci(50)); // Uncaught RangeError: Maximum call stack size exceeded
+// 尾调优化 推荐
+function fibonacciTrue(n, index = 0, res = 1) {
+  if (n <= 1) {
+    return res;
+  }
+  return fibonacciTrue(n - 1, res, index + res);
+}
+console.log(fibonacciTrue(25)); // 75025
+```
+
+:::
