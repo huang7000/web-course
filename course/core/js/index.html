@@ -2,149 +2,187 @@
 <html>
 
 <body>
+
+
   <h1>JavaScript Demo</h1>
-  https://stackblitz.com/
-  https://codesandbox.io/
-  <div id="counter">
-    <table>
-      <tr>
-        <th>日期</th>
-        <th>章节</th>
-      </tr>
-      <tr>
-        <td>
-          0414
-        </td>
-        <td>
-          第14章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0415
-        </td>
-        <td>
-          第15章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0416
-        </td>
-        <td>
-          第16章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0417
-        </td>
-        <td>
-          第17章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0418
-        </td>
-        <td>
-          第18章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0419
-        </td>
-        <td>
-          第19章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0420
-        </td>
-        <td>
-          第20章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0421
-        </td>
-        <td>
-          第21章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0422
-        </td>
-        <td>
-          第22章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0423
-        </td>
-        <td>
-          第23章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0424
-        </td>
-        <td>
-          第24章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0425
-        </td>
-        <td>
-          第25章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0426
-        </td>
-        <td>
-          第26章
-        </td>
-      </tr>
-      <tr>
-        <td>
-          0427
-        </td>
-        <td>
-          第27章
-        </td>
-      </tr>
-    </table>
+  <div>
+    <p id="counter">
+      <button id="start">Start</button>
+      <button id="cancel">Cancel</button>
+    </p>
   </div>
-  <button id="start">Start</button>
-  <button id="cancel">Cancel</button>
+
   <script>
-    let navigator = window.navigator;
-    console.log(navigator.userAgent);
-    console.log(navigator.oscpu);
-    console.log(navigator.vendor);
-    console.log(navigator.platform);
+    let someNode = document.getElementById("counter")
+    console.log(someNode);
 
-    console.log('navigator');
-    console.log(navigator.hardwareConcurrency);
-    console.log(navigator.deviceMemory);
-    console.log(navigator.maxTouchPoints);
-    let screen = window.screen;
-    console.log(screen.colorDepth);
-    console.log(screen.pixelDepth);
-    console.log(screen.orientation);
+    //appendChild()，用于在 childNodes 列表末尾添加节点。添加新节点会更新相关的关系指针，包括父节点和之前的最后一个子节点。appendChild()方法返回新添加的节点
+    var newNode = document.createElement('p')
+    newNode.textContent = '段落2'
+    let returnedNode = someNode.appendChild(newNode);
+    console.log(returnedNode == newNode); // true 
+    console.log(someNode.lastChild == newNode); // true
+    //如果把文档中已经存在的节点传给 appendChild()，则这个节点会从之前的位置被转移到新位置。
+    returnedNode = someNode.appendChild(someNode.firstChild);
+    console.log(returnedNode == someNode.firstChild); // false 
+    console.log(returnedNode == someNode.lastChild); // true
 
+    //如果想把节点放到 childNodes 中的特定位置而不是末尾，则可以使用 insertBefore()方法。两参数 要插入的节点和参照节点。
+    // 作为最后一个子节点插入
+    returnedNode = someNode.insertBefore(newNode, null);
+    console.log(newNode == someNode.lastChild); // true 
+    // 作为新的第一个子节点插入
+    returnedNode = someNode.insertBefore(newNode, someNode.firstChild);
+    console.log(returnedNode == newNode); // true 
+    console.log(newNode == someNode.firstChild); // true 
+    // 插入最后一个子节点前面
+    returnedNode = someNode.insertBefore(newNode, someNode.lastChild);
+    console.log(newNode == someNode.childNodes[someNode.childNodes.length - 2]); // true
+
+    //replaceChild()方法接收两个参数：要插入的节点和要替换的节点。要替换的节点会被返回并从文档树中完全移除，要插入的节点会取而代之。
+    // 替换第一个子节点
+    returnedNode = someNode.replaceChild(newNode, someNode.firstChild);
+    // 替换最后一个子节点
+    returnedNode = someNode.replaceChild(newNode, someNode.lastChild);
+
+    //removeChild()方法。这个方法接收一个参数，即要移除的节点。被移除的节点会被返回
+    // 删除第一个子节点
+    let formerFirstChild = someNode.removeChild(someNode.firstChild);
+    // 删除最后一个子节点
+    let formerLastChild = someNode.removeChild(someNode.lastChild);
+
+    //cloneNode()，会返回与调用它的节点一模一样的节点。cloneNode()方法接收一个布尔值参数，表示是否深复制。
+    let deepList = someNode.cloneNode(true);
+    console.log(deepList.childNodes.length); // 2
+    let shallowList = someNode.cloneNode(false);
+    console.log(shallowList.childNodes.length); // 0
+
+    //normalize()。这个方法唯一的任务就是处理文档子树中的文本节点。
+    console.log(someNode.childNodes.length); //2
+    someNode.normalize()
+    console.log(someNode.childNodes.length); //2
   </script>
 
+  https://stackblitz.com/
+  https://codesandbox.io/
+  <table>
+    <tr>
+      <th>日期</th>
+      <th>章节</th>
+    </tr>
+    <tr>
+      <td>
+        0414
+      </td>
+      <td>
+        第14章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0415
+      </td>
+      <td>
+        第15章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0416
+      </td>
+      <td>
+        第16章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0417
+      </td>
+      <td>
+        第17章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0418
+      </td>
+      <td>
+        第18章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0419
+      </td>
+      <td>
+        第19章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0420
+      </td>
+      <td>
+        第20章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0421
+      </td>
+      <td>
+        第21章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0422
+      </td>
+      <td>
+        第22章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0423
+      </td>
+      <td>
+        第23章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0424
+      </td>
+      <td>
+        第24章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0425
+      </td>
+      <td>
+        第25章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0426
+      </td>
+      <td>
+        第26章
+      </td>
+    </tr>
+    <tr>
+      <td>
+        0427
+      </td>
+      <td>
+        第27章
+      </td>
+    </tr>
+  </table>
 </body>
 
 </html>
