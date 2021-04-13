@@ -136,23 +136,21 @@
   <button id="start">Start</button>
   <button id="cancel">Cancel</button>
   <script>
-    console.log(window.screen);
-    let history = window.history;
-    // 后退一页
-    history.go(-1);
-    // 前进一页
-    history.go(1);
-    // 前进两页
-    history.go(2);
-    //go()有两个简写方法：back()和 forward()。顾名思义，这两个方法模拟了浏览器的后退按钮和前进按钮：
-    // 后退一页
-    history.back();
-    // 前进一页
-    history.forward();
-    //对象还有一个 length 属性，表示历史记录中有多个条目。
-    let stateObject = { foo: "bar" };
-    history.pushState(stateObject, "My title", "baz.html");
-    history.replaceState({ newFoo: "newBar" }, "New title");
+    let navigator = window.navigator;
+    console.log(navigator.userAgent);
+    console.log(navigator.oscpu);
+    console.log(navigator.vendor);
+    console.log(navigator.platform);
+
+    console.log('navigator');
+    console.log(navigator.hardwareConcurrency);
+    console.log(navigator.deviceMemory);
+    console.log(navigator.maxTouchPoints);
+    let screen = window.screen;
+    console.log(screen.colorDepth);
+    console.log(screen.pixelDepth);
+    console.log(screen.orientation);
+
   </script>
 
 </body>
