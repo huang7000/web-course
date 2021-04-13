@@ -85,13 +85,13 @@ ECMAScript、BOM和DOM
     - [x] 11.3　异步函数
     - [x] 11.4　小结
 - [ ] 第三部分 BOM和DOM
-  - [ ] 第12章　BOM
-    - [ ] 12.1　window对象
-    - [ ] 12.2　location对象
-    - [ ] 12.3　navigator对象
-    - [ ] 12.4　screen对象
-    - [ ] 12.5　history对象
-    - [ ] 12.6　小结
+  - [x] 第12章　BOM
+    - [x] 12.1　window对象
+    - [x] 12.2　location对象
+    - [x] 12.3　navigator对象
+    - [x] 12.4　screen对象
+    - [x] 12.5　history对象
+    - [x] 12.6　小结
   - [ ] 第13章　客户端检测
     - [ ] 13.1　能力检测
     - [ ] 13.2　用户代理检测

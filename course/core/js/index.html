@@ -13,14 +13,6 @@
       </tr>
       <tr>
         <td>
-          0412
-        </td>
-        <td>
-          第12章
-        </td>
-      </tr>
-      <tr>
-        <td>
           0413
         </td>
         <td>
@@ -141,20 +133,26 @@
       </tr>
     </table>
   </div>
-  <button id="start">Start</button> 
+  <button id="start">Start</button>
   <button id="cancel">Cancel</button>
   <script>
-function fooPromiseExecutor(resolve, reject) { 
- setTimeout(reject, 1000, 'bar'); 
-} 
-async function foo() { 
- await new Promise(fooPromiseExecutor); 
-} 
-foo(); 
-// Uncaught (in promise) bar 
-// foo
-// async function (async) 
-// foo
+    console.log(window.screen);
+    let history = window.history;
+    // 后退一页
+    history.go(-1);
+    // 前进一页
+    history.go(1);
+    // 前进两页
+    history.go(2);
+    //go()有两个简写方法：back()和 forward()。顾名思义，这两个方法模拟了浏览器的后退按钮和前进按钮：
+    // 后退一页
+    history.back();
+    // 前进一页
+    history.forward();
+    //对象还有一个 length 属性，表示历史记录中有多个条目。
+    let stateObject = { foo: "bar" };
+    history.pushState(stateObject, "My title", "baz.html");
+    history.replaceState({ newFoo: "newBar" }, "New title");
   </script>
 
 </body>
