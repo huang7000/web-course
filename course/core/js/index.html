@@ -5,29 +5,15 @@
 
 <body>
   <h1>JavaScript Demo</h1>
-  <div id="myDiv" name="myDiv">Some text</div>
-  <img src="smiley-2.gif" alt="Smiley face" width="42" height="42" id="img">
-  <br>
+  <div id="myDiv"></div>
   <script>
-
-    let someNode = document.getElementById("counter");
-    let myDivId = document.getElementById("myDiv");
-    let myDivName = document.getElementsByName("myDiv");
-    let myDivTagName = document.getElementsByTagName("div");
-    console.log(myDivId);
-    console.log(myDivTagName);
-    console.log(myDivName);
-    console.log(myDivName == myDivTagName);//false
-    console.log(myDivName[0] == myDivId);//true
-    console.log(myDivTagName[0] == myDivId);//true
-    let hasXmlDom = document.implementation.hasFeature("XML", "1.0");//true
-    console.log(hasXmlDom);
-    document.write("<strong>" + (new Date()).toString() + "</strong>");
-    document.write("  <br>");
-    document.writeln("<strong>" + (new Date()).toString() + "</strong>");
-    window.onload = function () {
-      document.write("Hello world!");
-    };
+    let element = document.getElementById("myDiv");
+    let attr = document.createAttribute("align");
+    attr.value = "left";
+    element.setAttributeNode(attr);
+    console.log(element.attributes["align"].value); // "left" 
+    console.log(element.getAttributeNode("align").value); // "left" 
+    console.log(element.getAttribute("align")); // "left"
   </script>
 
   https://stackblitz.com/
