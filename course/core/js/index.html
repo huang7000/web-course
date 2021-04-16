@@ -6,14 +6,58 @@
 <body>
   <h1>JavaScript Demo</h1>
   <div id="myDiv"></div>
+
   <script>
-    let element = document.getElementById("myDiv");
-    let attr = document.createAttribute("align");
-    attr.value = "left";
-    element.setAttributeNode(attr);
-    console.log(element.attributes["align"].value); // "left" 
-    console.log(element.getAttributeNode("align").value); // "left" 
-    console.log(element.getAttribute("align")); // "left"
+    //childList 设置为 true
+    function childListAddOB() {
+      // 清空主体
+      document.body.innerHTML = "";
+      let observer = new MutationObserver(mutationRecords =>
+        console.log(mutationRecords)
+      );
+      observer.observe(document.body, { childList: true });
+      document.body.appendChild(document.createElement("div"));
+      // [
+      // {
+      // addedNodes: NodeList[div],
+      // attributeName: null,
+      // attributeNamespace: null,
+      // oldValue: null,
+      // nextSibling: null,
+      // previousSibling: null,
+      // removedNodes: NodeList[],
+      // target: body,
+      // type: "childList",
+      // }
+      // ]
+    }
+    function childListRemoveOB() {
+      let observer = new MutationObserver(mutationRecords =>
+        console.log(mutationRecords)
+      );
+      observer.observe(document.body, { childList: true });
+      // 清空主体
+      document.body.innerHTML = "";
+      // document.body.removeChild(document.createElement("div"));
+      // [
+      // {
+      // addedNodes: NodeList[],
+      // attributeName: null,
+      // attributeNamespace: null,
+      // oldValue: null,
+      // nextSibling: null,
+      // previousSibling: null,
+      // removedNodes: NodeList[div],
+      // target: body,
+      // type: "childList",
+      // }
+      // ]
+    }
+    //childListAddOB();
+    childListRemoveOB();
+
+
+
   </script>
 
   https://stackblitz.com/
@@ -22,14 +66,6 @@
     <tr>
       <th>日期</th>
       <th>章节</th>
-    </tr>
-    <tr>
-      <td>
-        0414
-      </td>
-      <td>
-        第14章
-      </td>
     </tr>
     <tr>
       <td>
