@@ -5,61 +5,8 @@
 
 <body>
   <h1>JavaScript Demo</h1>
-  <div id="myDiv"></div>
-
-  <script>
-    //childList 设置为 true
-    function childListAddOB() {
-      // 清空主体
-      document.body.innerHTML = "";
-      let observer = new MutationObserver(mutationRecords =>
-        console.log(mutationRecords)
-      );
-      observer.observe(document.body, { childList: true });
-      document.body.appendChild(document.createElement("div"));
-      // [
-      // {
-      // addedNodes: NodeList[div],
-      // attributeName: null,
-      // attributeNamespace: null,
-      // oldValue: null,
-      // nextSibling: null,
-      // previousSibling: null,
-      // removedNodes: NodeList[],
-      // target: body,
-      // type: "childList",
-      // }
-      // ]
-    }
-    function childListRemoveOB() {
-      let observer = new MutationObserver(mutationRecords =>
-        console.log(mutationRecords)
-      );
-      observer.observe(document.body, { childList: true });
-      // 清空主体
-      document.body.innerHTML = "";
-      // document.body.removeChild(document.createElement("div"));
-      // [
-      // {
-      // addedNodes: NodeList[],
-      // attributeName: null,
-      // attributeNamespace: null,
-      // oldValue: null,
-      // nextSibling: null,
-      // previousSibling: null,
-      // removedNodes: NodeList[div],
-      // target: body,
-      // type: "childList",
-      // }
-      // ]
-    }
-    //childListAddOB();
-    childListRemoveOB();
-
-
-
-  </script>
-
+  <form></form>
+  <div id="myDiv" data-appId="12345" data-myname="Nicholas"></div>
   https://stackblitz.com/
   https://codesandbox.io/
   <table>
@@ -173,5 +120,28 @@
     </tr>
   </table>
 </body>
+
+<script>
+  let div = document.getElementById("myDiv");
+  //如果使用 outerHTML 设置 HTML，比如：
+
+  //则会得到与执行以下脚本相同的结果：
+  // let p = document.createElement("p");
+  // p.appendChild(document.createTextNode("This is a paragraph.12346"));
+  // div.parentNode.replaceChild(p, div);
+  let element = div
+  // 作为前一个同胞节点插入
+  element.insertAdjacentHTML("beforebegin", "<p>Hello world!</p>");
+  element.insertAdjacentText("beforebegin", "Hello world!");
+  // 作为第一个子节点插入
+  element.insertAdjacentHTML("afterbegin", "<p>Hello world!</p>");
+  element.insertAdjacentText("afterbegin", "Hello world!");
+  // 作为最后一个子节点插入
+  element.insertAdjacentHTML("beforeend", "<p>Hello world!</p>");
+  element.insertAdjacentText("beforeend", "Hello world!");
+  // 作为下一个同胞节点插入
+  element.insertAdjacentHTML("afterend", "<p>Hello world!</p>"); element.
+    insertAdjacentText("afterend", "Hello world!");
+</script>
 
 </html>
