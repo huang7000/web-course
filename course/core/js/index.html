@@ -122,26 +122,21 @@
 </body>
 
 <script>
-  let div = document.getElementById("myDiv");
-  //如果使用 outerHTML 设置 HTML，比如：
-
-  //则会得到与执行以下脚本相同的结果：
-  // let p = document.createElement("p");
-  // p.appendChild(document.createTextNode("This is a paragraph.12346"));
-  // div.parentNode.replaceChild(p, div);
-  let element = div
-  // 作为前一个同胞节点插入
-  element.insertAdjacentHTML("beforebegin", "<p>Hello world!</p>");
-  element.insertAdjacentText("beforebegin", "Hello world!");
-  // 作为第一个子节点插入
-  element.insertAdjacentHTML("afterbegin", "<p>Hello world!</p>");
-  element.insertAdjacentText("afterbegin", "Hello world!");
-  // 作为最后一个子节点插入
-  element.insertAdjacentHTML("beforeend", "<p>Hello world!</p>");
-  element.insertAdjacentText("beforeend", "Hello world!");
-  // 作为下一个同胞节点插入
-  element.insertAdjacentHTML("afterend", "<p>Hello world!</p>"); element.
-    insertAdjacentText("afterend", "Hello world!");
+  let div1 = document.createElement("div");
+  div1.setAttribute("class", "box");
+  let div2 = document.createElement("div");
+  div2.setAttribute("class", "box");
+  console.log(div1.isSameNode(div1)); // true 
+  console.log(div1.isEqualNode(div2)); // true 
+  console.log(div1.isSameNode(div2)); // false
+  let div = document.createElement("div");
+  div.setUserData("name", "Nicholas", function (operation, key, value, src, dest) {
+    if (operation == 1) {
+      dest.setUserData(key, value, function () { });
+    }
+  });
+  let newDiv = div.cloneNode(true);
+  console.log(newDiv.getUserData("name")); // "Nicholas"
 </script>
 
 </html>
