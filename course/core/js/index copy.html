@@ -1,47 +1,67 @@
 <!DOCTYPE html>
-<!-- sss -->
-<html>
-<title>index</title>
-<style>
-  #myDiv {
-    border: 1px solid black;
-    margin-top: 20px;
-  }
-</style>
+<html lang="en" onclick="htmlClick()">
 
-<body>
-  <h1>JavaScript Demo</h1>
-  <div id="div1">
-    <p><b>Hello</b> world!</p>
-    <ul>
-      <li>List item 1</li>
-      <li>List item 2</li>
-      <li>List item 3</li>
-    </ul>
-  </div>
-  <!-- <div>
-    <p id="p1"><b>Hello</b> world!</p>
-  </div>
-  <div>
-    <p id="p2"><b>Hello</b> world!</p>
-  </div>
-  <div>
-    <p id="p3"><b>Hello</b> world!</p>
-  </div> -->
-  <p id="p1">Paragraph 1</p>
-  <p id="p2">Paragraph 2</p>
+<head>
+  <meta charset="UTF-8" />
+  <title>冒泡title</title>
+</head>
+
+<body onclick="bodyClick()">
+  <button onclick="btn()">
+    点击冒泡
+  </button>
+  <script>
+    function btn() {
+      console.log("button被点击事件冒泡");
+    }
+
+    function bodyClick() {
+      console.log("body被点击事件冒泡");
+    }
+
+    function htmlClick() {
+      console.log("html被点击事件冒泡");
+    }
+    document.onclick = function () {
+      console.log("document被点击事件冒泡");
+    };
+    let oB = document.querySelector("button");
+    let oBody = document.querySelector("body");
+    let ohtml = document.querySelector("html");
+    oB.addEventListener(
+      "click",
+      function () {
+        console.log("button被事件捕获");
+      },
+      true
+    );
+
+
+
+    oBody.addEventListener(
+      "click",
+      function () {
+        console.log("body被事件捕获");
+      },
+      true
+    );
+
+    ohtml.addEventListener(
+      "click",
+      function () {
+        console.log("html被事件捕获");
+      },
+      true
+    );
+
+    document.addEventListener(
+      "click",
+      function () {
+        console.log("document被事件捕获");
+      },
+      true
+    );
+  </script>
 </body>
-
-<script>
-  let range1 = document.createRange();
-  let range2 = document.createRange();
-  let p1 = document.getElementById("p1");
-  range1.selectNodeContents(p1);
-  range2.selectNodeContents(p1);
-  range2.setEndBefore(p1.lastChild);
-  console.log(range1.compareBoundaryPoints(Range.START_TO_START, range2)); // 0 
-  console.log(range1.compareBoundaryPoints(Range.END_TO_END, range2)); // 1
-</script>
-
 
 </html>
