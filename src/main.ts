@@ -1,4 +1,7 @@
-import { createApp } from "vue";
+
+// import { createApp } from 'vue';
+// 修改 tsconfig.json exclude添加 src/main.ts
+import { createApp } from 'vue/dist/vue.esm-bundler.js'
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -21,8 +24,6 @@ app.component(VcCodeSnippet.name as string, VcCodeSnippet);
 import VcIconView from "./components/icon/src/icons.vue";
 app.component(VcIconView.name as string, VcIconView);
 
-import codepenSnippet from "../build/components/codepen-snippet.vue";
-app.component("codepenSnippet" as string, codepenSnippet);
 
 import Icon from "./components/icon";
 app.use(Icon);

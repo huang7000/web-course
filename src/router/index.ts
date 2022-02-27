@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import javascript from "./jsRouter";
+import jsRouter from "./jsRouter";
+import vueRouter from "./vueRouter";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     component: () => import("../views/index.vue"),
     children: [
-      ...javascript.routes,
+      // ...jsRouter.routes,
+      ...vueRouter.routes,
     ],
   },
 ];

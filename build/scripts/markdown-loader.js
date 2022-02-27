@@ -7,7 +7,7 @@ const hashSum = require("hash-sum");
 const snippetToVueComponent = require("./snippet-to-component");
 const snippetToVueStyle = require("./snippet-to-style");
 
-module.exports = function(source) {
+module.exports = function (source) {
   source = MarkdownVariable(source);
 
   // 初始还MarkdownIt用于转换md文件为html
@@ -15,9 +15,14 @@ module.exports = function(source) {
     html: true,
     xhtmlOut: true,
     // 将markdown中的代码块用hljs高亮显示
-    highlight: function(content, language) {
+    highlight: function (content, language) {
       language = language && hljs.getLanguage(language) ? language : "html";
-      const formatCode = hljs.highlight(language, content, true).value;
+      let formatCode = hljs.highlight(language, content, true).value;
+      const delimiterRegex = /\{\{.*?\}\}/g;
+      formatCode = formatCode.replace(delimiterRegex, (value) => {
+        //const code = `data_${hashSum(value)}`;
+        return `<span v-html="'${value}'"></span>`;
+      });
       return `<pre><code class="language-${language}">${formatCode}</code></pre>`;
     }
   });
@@ -95,7 +100,6 @@ module.exports = function(source) {
                 </vc-code-snippet>`;
     }
   });
-
   return `<template>
             <vc-markdown-view>
               ${markdownIt.render(source)}
