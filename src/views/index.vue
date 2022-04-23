@@ -23,13 +23,17 @@
 import { defineComponent } from "vue";
 import VcIndexMenu from "../../build/components/index-menu.vue";
 // import jsRouter from "../router/jsRouter";
+import vueCompositionRouter from "../router/vueCompositionRouter";
+import vueOptionsRouter from "../router/vueOptionsRouter";
 import vueRouter from "../router/vueRouter";
 export default defineComponent({
   components: { VcIndexMenu },
   setup() {
     // const jsMenu = jsRouter.menus;
     const vueMenu = vueRouter.menus;
-    const menuList = [...vueMenu];
+    const vueCompositionMenu = vueCompositionRouter.menus;
+    const vueOptionsMenu = vueOptionsRouter.menus;
+    const menuList = [...vueMenu, ...vueCompositionMenu, ...vueOptionsMenu];
     return { menuList };
   },
 });

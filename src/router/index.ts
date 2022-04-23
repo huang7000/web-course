@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import jsRouter from "./jsRouter";
+// import jsRouter from "./jsRouter";
 import vueRouter from "./vueRouter";
+import vueCompositionRouter from "./vueCompositionRouter";
+import vueOptionsRouter from "./vueOptionsRouter";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -8,6 +10,8 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       // ...jsRouter.routes,
       ...vueRouter.routes,
+      ...vueCompositionRouter.routes,
+      ...vueOptionsRouter.routes,
     ],
   },
 ];

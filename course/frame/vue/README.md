@@ -1,4 +1,6 @@
-# vue 3.0 官方文档学习
+# vue
+
+vue 3.0 官方文档学习
 
 - [ ] 基础
   - [ ] 开发概览
@@ -56,8 +58,8 @@
   - [ ] v-for 中的 Ref 数组
   - [ ] 异步组件
   - [ ] attribute 强制行为
-  - [ ] \$attrs 包括 class & styke
-  - [ ] \$children
+  - [ ] $attrs 包括 class & styke
+  - [ ] $children
   - [ ] 自定义指令
   - [ ] 自定义元素交互
   - [ ] Data 选项
@@ -71,7 +73,7 @@
   - [ ] 内联模板 Attribute
   - [ ] key attribute
   - [ ] 按键修饰符
-  - [ ] 移除 \$listeners
+  - [ ] 移除 $listeners
   - [ ] 在 prop 的默认函数中访问 this
   - [ ] 渲染函数 API
   - [ ] Slot 统一
@@ -79,6 +81,6 @@
   - [ ] Transition Group 根元素
   - [ ] 移除 v-on.native 修饰符
   - [ ] v-model
-  - [ ] v-if 与 v-for 的优先级对比
+  - [ ] v-if 与 v-for的优先级对比
   - [ ] v-bind 合并行为
   - [ ] Watch on Arrays
