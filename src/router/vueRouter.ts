@@ -13,21 +13,26 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../../course/frame/vue/README.md")
   },
   {
-    path: "/vue/vComposition",
-    name: "vComposition",
-    component: () => import("../../course/frame/vue/vComposition.vue")
+    path: "/vue/mdComposition",
+    name: "mdComposition",
+    component: () => import("../../course/frame/vue/mdComposition.md")
   },
+  {
+    path: "/vue/mdOptions",
+    name: "mdOptions",
+    component: () => import("../../course/frame/vue/mdOptions.md")
+  },
+  // {
+  //   path: "/vue/vComposition",
+  //   name: "vComposition",
+  //   component: () => import("../../course/frame/vue/vComposition.vue")
+  // },
 
-  {
-    path: "/vue/vOptions",
-    name: "vOptions",
-    component: () => import("../../course/frame/vue/vOptions.vue")
-  },
-  {
-    path: "/vue/setupOptions",
-    name: "setupOptions",
-    component: () => import("../../course/frame/vue/setupOptions.vue")
-  },
+  // {
+  //   path: "/vue/vOptions",
+  //   name: "vOptions",
+  //   component: () => import("../../course/frame/vue/vOptions.vue")
+  // },
   {
     path: "/vue/00",
     name: "vue00",
@@ -234,20 +239,26 @@ const menus: Array<MenuItemModel> = [
             subtitle: "",
           },
           {
-            path: "/vue/vComposition",
-            title: "vComposition",
+            path: "/vue/mdComposition",
+            title: "mdComposition",
             subtitle: "",
           },
           {
-            path: "/vue/vOptions",
-            title: "vOptions",
+            path: "/vue/mdOptions",
+            title: "mdOptions",
             subtitle: "",
           },
-          {
-            path: "/vue/setupOptions",
-            title: "setupOptions",
-            subtitle: "",
-          },
+          // {
+          //   path: "/vue/vComposition",
+          //   title: "vComposition",
+          //   subtitle: "",
+          // },
+          // {
+          //   path: "/vue/vOptions",
+          //   title: "vOptions",
+          //   subtitle: "",
+          // },
+
         ],
       },
       {
