@@ -17,6 +17,16 @@ const routes: Array<RouteRecordRaw> = [
     name: `${basePath}01`,
     component: () => import(`../../course/frame/vue/${basePath}/01.md`),
   },
+  {
+    path: `/vue/${basePath}/02`,
+    name: `${basePath}02`,
+    component: () => import(`../../course/frame/vue/${basePath}/02.md`),
+  },
+  {
+    path: `/vue/${basePath}/03`,
+    name: `${basePath}03`,
+    component: () => import(`../../course/frame/vue/${basePath}/03.md`),
+  },
 ];
 
 const menus: Array<MenuItemModel> = [
@@ -34,6 +44,16 @@ const menus: Array<MenuItemModel> = [
           {
             path: `/vue/${basePath}/01`,
             title: "介绍",
+            subtitle: "",
+          },
+          {
+            path: `/vue/${basePath}/02`,
+            title: "应用&组件实例",
+            subtitle: "",
+          },
+          {
+            path: `/vue/${basePath}/03`,
+            title: "模板语法",
             subtitle: "",
           },
         ],
