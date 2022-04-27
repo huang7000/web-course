@@ -37,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
     name: `${basePath}05`,
     component: () => import(`../../course/frame/vue/${basePath}/05.md`),
   },
+  {
+    path: `/vue/${basePath}/06`,
+    name: `${basePath}06`,
+    component: () => import(`../../course/frame/vue/${basePath}/06.md`),
+  },
 ];
 
 const menus: Array<MenuItemModel> = [
@@ -74,6 +79,11 @@ const menus: Array<MenuItemModel> = [
           {
             path: `/vue/${basePath}/05`,
             title: "计算属性和监听器",
+            subtitle: "",
+          },
+          {
+            path: `/vue/${basePath}/06`,
+            title: "Class 与 Style 绑定",
             subtitle: "",
           },
         ],
