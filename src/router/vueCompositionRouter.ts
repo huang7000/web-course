@@ -42,6 +42,16 @@ const routes: Array<RouteRecordRaw> = [
     name: `${basePath}06`,
     component: () => import(`../../course/frame/vue/${basePath}/06.md`),
   },
+  {
+    path: `/vue/${basePath}/07`,
+    name: `${basePath}07`,
+    component: () => import(`../../course/frame/vue/${basePath}/07.md`),
+  },
+  {
+    path: `/vue/${basePath}/08`,
+    name: `${basePath}08`,
+    component: () => import(`../../course/frame/vue/${basePath}/08.md`),
+  },
 ];
 
 const menus: Array<MenuItemModel> = [
@@ -84,6 +94,16 @@ const menus: Array<MenuItemModel> = [
           {
             path: `/vue/${basePath}/06`,
             title: "Class 与 Style 绑定",
+            subtitle: "",
+          },
+          {
+            path: `/vue/${basePath}/07`,
+            title: "条件渲染",
+            subtitle: "",
+          },
+          {
+            path: `/vue/${basePath}/08`,
+            title: "列表渲染",
             subtitle: "",
           },
         ],
