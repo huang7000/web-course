@@ -52,6 +52,17 @@ const routes: Array<RouteRecordRaw> = [
     name: `${basePath}08`,
     component: () => import(`../../course/frame/vue/${basePath}/08.md`),
   },
+  {
+    path: `/vue/${basePath}/09`,
+    name: `${basePath}09`,
+    component: () => import(`../../course/frame/vue/${basePath}/09.md`),
+  },
+  {
+    path: `/vue/${basePath}/10`,
+    name: `${basePath}10`,
+    component: () => import(`../../course/frame/vue/${basePath}/10.md`),
+  },
+
 ];
 
 const menus: Array<MenuItemModel> = [
@@ -104,6 +115,16 @@ const menus: Array<MenuItemModel> = [
           {
             path: `/vue/${basePath}/08`,
             title: "列表渲染",
+            subtitle: "",
+          },
+          {
+            path: `/vue/${basePath}/09`,
+            title: "事件处理",
+            subtitle: "",
+          },
+          {
+            path: `/vue/${basePath}/10`,
+            title: "表单输入绑定",
             subtitle: "",
           },
         ],
