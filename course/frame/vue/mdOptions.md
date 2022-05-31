@@ -1,6 +1,6 @@
-# mdOptions
+# mdComposition
 
-:::snippet 组合式 vue
+:::snippet 响应式 vue
 
 ```vue
 <template>
@@ -23,45 +23,40 @@
   </ul>
 </template>
 <script lang="ts">
-import { defineComponent, ref, reactive } from "vue";
+import { defineComponent } from "vue";
 export default defineComponent({
-  setup() {
-    // 使用ref定义基本类型数据
-    let name = ref("张三");
-    let updateName = () => {
-      // 修改值时，必须要点value
-      name.value = "李四";
-    };
-    // 使用ref定义引用类型数据
-    let car = ref({
-      name: "奔驰",
-      price: 30,
-    });
-    let updateCar = () => {
-      // 修改值时，必须要点value
-      car.value.name = "奥迪";
-      car.value.price = 40;
-    };
-    // 使用reactive定义引用类型数据
-    // 注意：reactive只能定义引用类型数据
-    let plane = reactive({
-      name: "长城",
-      price: 300,
-    });
-    let updatePlane = () => {
-      // Proxy对象，不需要先点value
-      plane.name = "东方";
-      plane.price = 400;
-    };
-    //setup方法，返回出去的对象里面的成员，可以在模板中使用
+  data() {
     return {
-      name,
-      updateName,
-      car,
-      updateCar,
-      plane,
-      updatePlane,
+      name: "张三",
+      car: { name: "奥迪", price: "40" },
+      plane: { name: "长城", price: "300" },
     };
+  },
+  methods: {
+    updateName() {
+      this.name = this.name
+        .split("")
+        .reverse()
+        .join("");
+    },
+    updateCar() {
+      this.car = {
+        name: this.car.name
+          .split("")
+          .reverse()
+          .join(""),
+        price: this.car.price * 2,
+      };
+    },
+    updatePlane() {
+      this.plane = {
+        name: this.plane.name
+          .split("")
+          .reverse()
+          .join(""),
+        price: this.plane.price * 2,
+      };
+    },
   },
 });
 </script>
