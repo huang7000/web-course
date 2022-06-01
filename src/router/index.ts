@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 // import jsRouter from "./jsRouter";
 
-import vueRouter from "./vueRouter";
+import vueOptionsRouter from "./vueOptionsRouter";
+import vueCompositionRouter from "./vueCompositionRouter";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -13,7 +14,8 @@ const routes: Array<RouteRecordRaw> = [
         name: "vueRemark",
         component: () => import("../../course/frame/vue/remark.md"),
       },
-      ...vueRouter.routes,
+      ...vueOptionsRouter.routes,
+      ...vueCompositionRouter.routes
     ],
   },
 ];
