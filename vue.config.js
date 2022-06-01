@@ -1,5 +1,8 @@
 module.exports = {
   lintOnSave: false,//是否开启eslint检测
+  devServer:{
+    port:7000
+  },
   pages: {
     index: {
       entry: "src/main.ts"

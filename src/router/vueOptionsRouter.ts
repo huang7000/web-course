@@ -62,7 +62,11 @@ const routes: Array<RouteRecordRaw> = [
     name: `${basePath}10`,
     component: () => import(`../../course/frame/vue/${basePath}/10.md`),
   },
-
+  {
+    path: `/vue/${basePath}/11`,
+    name: `${basePath}11`,
+    component: () => import(`../../course/frame/vue/${basePath}/11.md`),
+  },
 ];
 
 const menus: Array<MenuItemModel> = [
@@ -125,6 +129,16 @@ const menus: Array<MenuItemModel> = [
           {
             path: `/vue/${basePath}/10`,
             title: "表单输入绑定",
+            subtitle: "",
+          },
+        ],
+      },
+      {
+        title: "第二部分 组件",
+        children: [
+          {
+            path: `/vue/${basePath}/11`,
+            title: "组件基础",
             subtitle: "",
           },
         ],
