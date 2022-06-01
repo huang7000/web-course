@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 // import jsRouter from "./jsRouter";
-import vueRouter from "./vueRouter";
+
 import vueCompositionRouter from "./vueCompositionRouter";
 import vueOptionsRouter from "./vueOptionsRouter";
 const routes: Array<RouteRecordRaw> = [
@@ -9,7 +9,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/index.vue"),
     children: [
       // ...jsRouter.routes,
-      ...vueRouter.routes,
+      {
+        path: "/vue/remark",
+        name: "vueRemark",
+        component: () => import("../../course/frame/vue/remark.md"),
+      },
       ...vueCompositionRouter.routes,
       ...vueOptionsRouter.routes,
     ],

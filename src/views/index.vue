@@ -22,18 +22,25 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import VcIndexMenu from "../../build/components/index-menu.vue";
-// import jsRouter from "../router/jsRouter";
 import vueCompositionRouter from "../router/vueCompositionRouter";
 import vueOptionsRouter from "../router/vueOptionsRouter";
-import vueRouter from "../router/vueRouter";
+
 export default defineComponent({
   components: { VcIndexMenu },
   setup() {
-    // const jsMenu = jsRouter.menus;
-    const vueMenu = vueRouter.menus;
     const vueCompositionMenu = vueCompositionRouter.menus;
     const vueOptionsMenu = vueOptionsRouter.menus;
-    const menuList = [...vueMenu, ...vueCompositionMenu, ...vueOptionsMenu];
+    const menuList = [];
+    // const vueType = "option";
+    // if (vueType !== "option") {
+    //   menuList.push(...vueOptionsMenu);
+    // } else {
+    //   menuList.push(...vueCompositionMenu);
+    // }
+    menuList.push(...vueOptionsMenu);
+    menuList.push(...vueCompositionMenu);
+    menuList.push(...vueOptionsMenu);
+    menuList.push(...vueCompositionMenu);
     return { menuList };
   },
 });
@@ -68,7 +75,7 @@ export default defineComponent({
 
 .vs-index--left {
   font-size: 14px;
-  padding: 16px 0;
+  padding: 8px 0;
   width: 240px;
   position: fixed;
   z-index: 1010;

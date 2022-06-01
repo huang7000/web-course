@@ -1,5 +1,5 @@
 <template>
-  <div :class="['vc-left-menu-item', classes]">
+  <div :class="['vc-left-menu-item', classes, 'div-level-' + (level + 1)]">
     <router-link
       v-if="data.path"
       class="vc-left-menu-item--link"
@@ -8,8 +8,12 @@
       {{ data.title }}
       <span v-text="data.subtitle" />
     </router-link>
-    <div v-else class="vc-left-menu-item--title" v-text="data.title" />
+    <div v-else class="vc-left-menu-item--title" @click="isShow = !isShow">
+      {{ data.title }}
+      {{ isShow ? "∧" : "∨" }}
+    </div>
     <vc-index-menu
+      v-show="isShow"
       v-for="(child, index) in data.children"
       :key="index"
       :data="child"
@@ -19,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, ref } from "vue";
 
 export type MenuItemModel = {
   title: string;
@@ -48,7 +52,8 @@ export default defineComponent({
         props.data.children &&
         props.data.children.length > 0,
     };
-    return { classes };
+    const isShow = ref(true);
+    return { classes, isShow };
   },
 });
 </script>
@@ -57,7 +62,7 @@ export default defineComponent({
 .vc-left-menu-item--link {
   display: block;
   position: relative;
-  padding: 8px 24px;
+  // padding: 8px 24px;
   color: $-color--text-primary;
   font-weight: normal;
   line-height: 1.5;
@@ -96,7 +101,7 @@ export default defineComponent({
   > .vc-left-menu-item--title {
     font-size: 14px;
     color: $-color--text-primary;
-    padding: 12px 8px 12px 24px;
+    // padding: 12px 8px 12px 24px;
     font-weight: bold;
   }
 }
@@ -105,7 +110,27 @@ export default defineComponent({
   > .vc-left-menu-item--title {
     color: $-color--text-secondary;
     font-size: 14px;
-    padding: 6px 8px 6px 24px;
+    // padding: 6px 8px 6px 24px;
+  }
+}
+.div-level-1 {
+  .vc-left-menu-item--title {
+    font-size: 22px !important;
+    padding: 6px 8px 6px 16px;
+  }
+}
+.div-level-2 {
+  .vc-left-menu-item--title,
+  .vc-left-menu-item--link {
+    font-size: 18px !important;
+    padding: 6px 8px 6px 32px;
+  }
+}
+.div-level-3 {
+  .vc-left-menu-item--title,
+  .vc-left-menu-item--link {
+    font-size: 16px !important;
+    padding: 6px 8px 6px 48px;
   }
 }
 </style>
