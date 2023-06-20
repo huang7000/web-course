@@ -8,6 +8,16 @@
 - vue 文档地址：[https://v3.cn.vuejs.org/](https://v3.cn.vuejs.org/)
 - echarts 文档：[https://echarts.apache.org/zh/index.html](https://echarts.apache.org/zh/index.html)
 
+  依赖安装失败问题
+  降低 node 版本 ，安装 nvm(node 版本管理工具，具体可以参考https://github.com/nvm-sh/nvm#installing-and-updating)
+  我的安装步骤是
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  nvm install 14.7.0
+  nvm run node --14.7.0
+  node -v
+  如果还报错的话就加上架构指定（--target_arch=x64 苹果 m1pro）
+  npm install --target_arch=x64
+
 vue 3.0 官方文档学习
 
 - [ ] 基础
@@ -52,8 +62,8 @@ vue 3.0 官方文档学习
   - [ ] v-for 中的 Ref 数组
   - [ ] 异步组件
   - [ ] attribute 强制行为
-  - [ ] $attrs 包括 class & styke
-  - [ ] $children
+  - [ ] \$attrs 包括 class & styke
+  - [ ] \$children
   - [ ] 自定义指令
   - [ ] 自定义元素交互
   - [ ] Data 选项
@@ -67,7 +77,7 @@ vue 3.0 官方文档学习
   - [ ] 内联模板 Attribute
   - [ ] key attribute
   - [ ] 按键修饰符
-  - [ ] 移除 $listeners
+  - [ ] 移除 \$listeners
   - [ ] 在 prop 的默认函数中访问 this
   - [ ] 渲染函数 API
   - [ ] Slot 统一
@@ -75,6 +85,6 @@ vue 3.0 官方文档学习
   - [ ] Transition Group 根元素
   - [ ] 移除 v-on.native 修饰符
   - [ ] v-model
-  - [ ] v-if 与 v-for的优先级对比
+  - [ ] v-if 与 v-for 的优先级对比
   - [ ] v-bind 合并行为
   - [ ] Watch on Arrays
