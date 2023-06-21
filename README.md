@@ -17,8 +17,8 @@
   node -v
   如果还报错的话就加上架构指定（--target_arch=x64 苹果 m1pro）
   npm install --target_arch=x64
-
-vue 3.0 官方文档学习
+  ceshitijiao
+  vue 3.0 官方文档学习
 
 - [ ] 基础
   - [ ] 开发概览
